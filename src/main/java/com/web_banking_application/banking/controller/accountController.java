@@ -20,7 +20,7 @@ import com.web_banking_application.banking.service.accountService;
 
 @RestController
 @RequestMapping("/api/account")
-
+@CrossOrigin(origins = "https://easy-online-banking.netlify.app")
 
 public class accountController {
 //	@Autowired
@@ -33,6 +33,7 @@ public class accountController {
     // Build Add account Rest API
     
     @PostMapping
+     @CrossOrigin(origins = "https://easy-online-banking.netlify.app")
     public ResponseEntity<accountDto> createAccount(@RequestBody accountDto AccountDto) {
         System.out.println("Received DTO in controller: " + AccountDto);
         accountDto savedAccount = AccountService.createAccount(AccountDto);
@@ -41,7 +42,7 @@ public class accountController {
     }
     // Build get account by userId Rest API
     @GetMapping("/userid/{userId}")
-    
+     @CrossOrigin(origins = "https://easy-online-banking.netlify.app")
     public ResponseEntity<accountDto> getAccountByUserID(@PathVariable("userId") Long userId) {
         accountDto accountDto = AccountService.getAccountByuserId(userId);
         if (accountDto != null) {
@@ -52,7 +53,7 @@ public class accountController {
     }
     //get account details using Account number
     @GetMapping("/{accNumber}")
-    
+     @CrossOrigin(origins = "https://easy-online-banking.netlify.app")
     public ResponseEntity<accountDto> getAccountByAccountNumber(@PathVariable("accNumber") Long accNumber) {
         accountDto accountDto = AccountService.getAccountByAccountNumber(accNumber);
         if (accountDto != null) {
@@ -65,7 +66,7 @@ public class accountController {
 
     // Build get account by accId Rest API
     @GetMapping("/id/{id}")
-    
+     @CrossOrigin(origins = "https://easy-online-banking.netlify.app")
     public ResponseEntity<accountDto> getAccountByID(@PathVariable("id") Long accId) {
         accountDto AccountDto = AccountService.getAcountByID(accId);
         return ResponseEntity.ok(AccountDto);
@@ -73,7 +74,7 @@ public class accountController {
 
     // Build get all accounts Rest API
     @GetMapping
-    
+     @CrossOrigin(origins = "https://easy-online-banking.netlify.app")
     public ResponseEntity<List<accountDto>> getAllAccounts() {
         List<accountDto> Accounts = AccountService.getAllAccounts();
         return ResponseEntity.ok(Accounts);
@@ -81,14 +82,14 @@ public class accountController {
     
     // Build Update account Rest API
     @PutMapping("/id/{id}")
-    
+     @CrossOrigin(origins = "https://easy-online-banking.netlify.app")
     public ResponseEntity<accountDto> updateAccount(@PathVariable("id") Long accId, @RequestBody accountDto updateAccounts) {
         accountDto AccountDto = AccountService.updateAccountDetails(accId, updateAccounts);
         return ResponseEntity.ok(AccountDto);
     }
     
     @PutMapping("user/{userId}")
-    @CrossOrigin(origins = "https://easy-online-banking.netlify.app/")
+    @CrossOrigin(origins = "https://easy-online-banking.netlify.app")
     public ResponseEntity<accountDto> updateAccountByuserId(@PathVariable("userId") Long accNumber,@RequestBody accountDto updatedAccounts) {
         accountDto accountDto = AccountService.updateAccountByuserId(accNumber,updatedAccounts);
         if (accountDto != null) {
@@ -100,7 +101,7 @@ public class accountController {
     
     
     @PutMapping("acc/{accNumber}")
-    @CrossOrigin(origins = "https://easy-online-banking.netlify.app/")
+    @CrossOrigin(origins = "https://easy-online-banking.netlify.app")
     public ResponseEntity<accountDto> updateAccountByAccountNumber(@PathVariable("accNumber") Long accNumber,@RequestBody accountDto updateAccounts) {
         accountDto accountDto = AccountService.updateAccountByAccountNumber(accNumber,updateAccounts);
         if (accountDto != null) {
@@ -113,7 +114,7 @@ public class accountController {
     
     // Build Delete account Rest API
     @DeleteMapping("/id/{id}")
-    @CrossOrigin(origins = "https://easy-online-banking.netlify.app/")
+    @CrossOrigin(origins = "https://easy-online-banking.netlify.app")
     public ResponseEntity<String> deleteAccount(@PathVariable("id") Long accId) {
         AccountService.deleteAccount(accId);
         return ResponseEntity.ok("Account Deleted Successfully!");

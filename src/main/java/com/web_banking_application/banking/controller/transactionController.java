@@ -27,13 +27,13 @@ public class transactionController {
 		this.TransactionService = TransactionService;
 		// TODO Auto-generated constructor stub
 	}
-	@CrossOrigin(origins = "https://easy-online-banking.netlify.app/")
+	 @CrossOrigin(origins = "https://easy-online-banking.netlify.app")
 	@PostMapping
 	public ResponseEntity<transactionDto> createTransaction(@RequestBody transactionDto TransactionDto){
 		transactionDto savedTransaction = TransactionService.createTransaction(TransactionDto);
 		return new ResponseEntity<>(savedTransaction, HttpStatus.CREATED);
 	}
-	@CrossOrigin(origins = "https://easy-online-banking.netlify.app/")
+	 @CrossOrigin(origins = "https://easy-online-banking.netlify.app")
 	@GetMapping
 	public ResponseEntity<List<transactionDto>> getAllTransaction(){
 		List<transactionDto> Transactions = TransactionService.getAlltransaction();

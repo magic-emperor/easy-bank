@@ -3,6 +3,7 @@ package com.web_banking_application.banking.Security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -33,8 +34,7 @@ public class SecurityConfig {
             .cors().and()
             .csrf().disable()
             .authorizeHttpRequests((authorize) -> authorize
-                .requestMatchers("/api/authenticate", "/api/register", "/api/users","/api/users/register", "/api/users/**").permitAll()
-                // .antMatchers("/api/users/register").permitAll()
+                 .requestMatchers("/api/authenticate", "/api/register", "/api/users/register","/api/users/**","api/**").permitAll()
                 .anyRequest().authenticated()
             )
             .sessionManagement((session) -> session
@@ -47,7 +47,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("https://easy-online-banking.netlify.app/"));
+        configuration.setAllowedOrigins(Arrays.asList("https://easy-online-banking.netlify.app", "http://localhost:3000")); // Adjust the port if necessary
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
