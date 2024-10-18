@@ -44,26 +44,30 @@
 //}
 package com.web_banking_application.banking.controller;
 
-import com.web_banking_application.banking.Security.JwtUtil;
-import com.web_banking_application.banking.dto.AuthRequest;
-import com.web_banking_application.banking.dto.AuthResponse;
-import com.web_banking_application.banking.dto.UsersDto;
-import com.web_banking_application.banking.service.implimentation.UsersServiceImplementation;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.web_banking_application.banking.Security.JwtUtil;
+import com.web_banking_application.banking.dto.AuthRequest;
+import com.web_banking_application.banking.dto.AuthResponse;
+import com.web_banking_application.banking.dto.UsersDto;
+import com.web_banking_application.banking.service.implimentation.UsersServiceImplementation;
 
 @RestController
 @RequestMapping("/api/authenticate")
-@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*", allowCredentials = "true")
+@CrossOrigin(origins = { "https://easyonliebanking.netlify.app"}, allowedHeaders = "*", allowCredentials = "true")
+
 public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -75,7 +79,7 @@ public class AuthController {
     private UsersServiceImplementation usersServiceImplementation;
 
     @PostMapping
-    @CrossOrigin("http://localhost:3000")
+    @CrossOrigin("https://easyonliebanking.netlify.app")
     public ResponseEntity<?> authenticate(@RequestBody AuthRequest authRequest) {
         try {
             authenticationManager.authenticate(

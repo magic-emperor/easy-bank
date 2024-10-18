@@ -2,7 +2,6 @@ package com.web_banking_application.banking.controller;
 
 import java.util.List;
 
-//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,17 +12,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.web_banking_application.banking.dto.accountDto;
-//import com.web_banking_application.banking.exception.AccountNotFoundException;
-//import com.web_banking_application.banking.exception.InsufficientFundsException;
 import com.web_banking_application.banking.service.accountService;
 
 
 @RestController
 @RequestMapping("/api/account")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"https://easyonliebanking.netlify.app", "https://easy-bank-production.up.railway.app"})
+
 public class accountController {
 //	@Autowired
     private final accountService AccountService;
@@ -33,7 +31,7 @@ public class accountController {
     }
     
     // Build Add account Rest API
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"https://easyonliebanking.netlify.app", "https://easy-bank-production.up.railway.app"})
     @PostMapping
     public ResponseEntity<accountDto> createAccount(@RequestBody accountDto AccountDto) {
         System.out.println("Received DTO in controller: " + AccountDto);
@@ -43,7 +41,7 @@ public class accountController {
     }
     // Build get account by userId Rest API
     @GetMapping("/userid/{userId}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"https://easyonliebanking.netlify.app", "https://easy-bank-production.up.railway.app"})
     public ResponseEntity<accountDto> getAccountByUserID(@PathVariable("userId") Long userId) {
         accountDto accountDto = AccountService.getAccountByuserId(userId);
         if (accountDto != null) {
@@ -54,7 +52,7 @@ public class accountController {
     }
     //get account details using Account number
     @GetMapping("/{accNumber}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"https://easyonliebanking.netlify.app", "https://easy-bank-production.up.railway.app"})
     public ResponseEntity<accountDto> getAccountByAccountNumber(@PathVariable("accNumber") Long accNumber) {
         accountDto accountDto = AccountService.getAccountByAccountNumber(accNumber);
         if (accountDto != null) {
@@ -67,7 +65,7 @@ public class accountController {
 
     // Build get account by accId Rest API
     @GetMapping("/id/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"https://easyonliebanking.netlify.app", "https://easy-bank-production.up.railway.app"})
     public ResponseEntity<accountDto> getAccountByID(@PathVariable("id") Long accId) {
         accountDto AccountDto = AccountService.getAcountByID(accId);
         return ResponseEntity.ok(AccountDto);
@@ -75,7 +73,7 @@ public class accountController {
 
     // Build get all accounts Rest API
     @GetMapping
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"https://easyonliebanking.netlify.app", "https://easy-bank-production.up.railway.app"})
     public ResponseEntity<List<accountDto>> getAllAccounts() {
         List<accountDto> Accounts = AccountService.getAllAccounts();
         return ResponseEntity.ok(Accounts);
@@ -83,7 +81,7 @@ public class accountController {
     
     // Build Update account Rest API
     @PutMapping("/id/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"https://easyonliebanking.netlify.app", "https://easy-bank-production.up.railway.app"})
     public ResponseEntity<accountDto> updateAccount(@PathVariable("id") Long accId, @RequestBody accountDto updateAccounts) {
         accountDto AccountDto = AccountService.updateAccountDetails(accId, updateAccounts);
         return ResponseEntity.ok(AccountDto);
