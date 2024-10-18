@@ -1,6 +1,7 @@
 package com.web_banking_application.banking.Security;
 
 import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,7 +36,14 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             jwt = authorizationHeader.substring(7);
             username = jwtUtil.getUsernameFromToken(jwt);
+            
         }
+        if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
+    logger.warn("Missing or invalid Authorization header.");
+    filterChain.doFilter(request, response);
+    return;
+}
+
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
@@ -46,7 +54,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 usernamePasswordAuthenticationToken
                         .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-            }
+                logger.info("User authenticated: " + username);
+            }else {
+            logger.warn("Invalid JWT: " + jwt);
+        }
 
         }
         filterChain.doFilter(request, response);
