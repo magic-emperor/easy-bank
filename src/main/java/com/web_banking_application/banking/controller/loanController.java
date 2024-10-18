@@ -48,7 +48,7 @@ public class loanController {
 	}
 	
 	@DeleteMapping("id/{id}")
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "https://chipper-vacherin-299a05.netlify.app/")
 	public ResponseEntity<String> deleteAccount(@PathVariable("id") Long loanId){
 		LoanService.deleteLoan(loanId);
 		return ResponseEntity.ok("Loan Deleted Successfully!");

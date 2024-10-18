@@ -20,7 +20,7 @@ import com.web_banking_application.banking.service.accountService;
 
 @RestController
 @RequestMapping("/api/account")
-@CrossOrigin(origins = {"https://easyonliebanking.netlify.app", "https://easy-bank-production.up.railway.app"})
+@CrossOrigin(origins = {"https://chipper-vacherin-299a05.netlify.app/", "https://easy-bank-production.up.railway.app"})
 
 public class accountController {
 //	@Autowired
@@ -31,7 +31,7 @@ public class accountController {
     }
     
     // Build Add account Rest API
-    @CrossOrigin(origins = {"https://easyonliebanking.netlify.app", "https://easy-bank-production.up.railway.app"})
+    @CrossOrigin(origins = {"https://chipper-vacherin-299a05.netlify.app/", "https://easy-bank-production.up.railway.app"})
     @PostMapping
     public ResponseEntity<accountDto> createAccount(@RequestBody accountDto AccountDto) {
         System.out.println("Received DTO in controller: " + AccountDto);
@@ -41,7 +41,7 @@ public class accountController {
     }
     // Build get account by userId Rest API
     @GetMapping("/userid/{userId}")
-    @CrossOrigin(origins = {"https://easyonliebanking.netlify.app", "https://easy-bank-production.up.railway.app"})
+    @CrossOrigin(origins = {"https://chipper-vacherin-299a05.netlify.app/", "https://easy-bank-production.up.railway.app"})
     public ResponseEntity<accountDto> getAccountByUserID(@PathVariable("userId") Long userId) {
         accountDto accountDto = AccountService.getAccountByuserId(userId);
         if (accountDto != null) {
@@ -52,7 +52,7 @@ public class accountController {
     }
     //get account details using Account number
     @GetMapping("/{accNumber}")
-    @CrossOrigin(origins = {"https://easyonliebanking.netlify.app", "https://easy-bank-production.up.railway.app"})
+    @CrossOrigin(origins = {"https://chipper-vacherin-299a05.netlify.app/", "https://easy-bank-production.up.railway.app"})
     public ResponseEntity<accountDto> getAccountByAccountNumber(@PathVariable("accNumber") Long accNumber) {
         accountDto accountDto = AccountService.getAccountByAccountNumber(accNumber);
         if (accountDto != null) {
@@ -65,7 +65,7 @@ public class accountController {
 
     // Build get account by accId Rest API
     @GetMapping("/id/{id}")
-    @CrossOrigin(origins = {"https://easyonliebanking.netlify.app", "https://easy-bank-production.up.railway.app"})
+    @CrossOrigin(origins = {"https://chipper-vacherin-299a05.netlify.app/", "https://easy-bank-production.up.railway.app"})
     public ResponseEntity<accountDto> getAccountByID(@PathVariable("id") Long accId) {
         accountDto AccountDto = AccountService.getAcountByID(accId);
         return ResponseEntity.ok(AccountDto);
@@ -73,7 +73,7 @@ public class accountController {
 
     // Build get all accounts Rest API
     @GetMapping
-    @CrossOrigin(origins = {"https://easyonliebanking.netlify.app", "https://easy-bank-production.up.railway.app"})
+    @CrossOrigin(origins = {"https://chipper-vacherin-299a05.netlify.app/", "https://easy-bank-production.up.railway.app"})
     public ResponseEntity<List<accountDto>> getAllAccounts() {
         List<accountDto> Accounts = AccountService.getAllAccounts();
         return ResponseEntity.ok(Accounts);
@@ -81,7 +81,7 @@ public class accountController {
     
     // Build Update account Rest API
     @PutMapping("/id/{id}")
-    @CrossOrigin(origins = {"https://easyonliebanking.netlify.app", "https://easy-bank-production.up.railway.app"})
+    @CrossOrigin(origins = {"https://chipper-vacherin-299a05.netlify.app/", "https://easy-bank-production.up.railway.app"})
     public ResponseEntity<accountDto> updateAccount(@PathVariable("id") Long accId, @RequestBody accountDto updateAccounts) {
         accountDto AccountDto = AccountService.updateAccountDetails(accId, updateAccounts);
         return ResponseEntity.ok(AccountDto);
