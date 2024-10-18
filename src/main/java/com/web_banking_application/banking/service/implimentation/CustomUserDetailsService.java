@@ -1,14 +1,14 @@
 package com.web_banking_application.banking.service.implimentation;
 
-import com.web_banking_application.banking.entities.users;
-import com.web_banking_application.banking.repositories.UsersRepositories;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import java.util.Collections;
+
+import com.web_banking_application.banking.entities.users;
+import com.web_banking_application.banking.repositories.UsersRepositories;
 
 
 @Service

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.web_banking_application.banking.dto.UsersDto;
 import com.web_banking_application.banking.service.UserService;
-@CrossOrigin({"https://chipper-vacherin-299a05.netlify.app/"})
+@CrossOrigin({"https://easy-online-banking.netlify.app/"})
 @RestController
 @RequestMapping("/api/users")
 public class UsersController {
@@ -27,7 +27,7 @@ public class UsersController {
 	}
 
     @PostMapping("/register")
-    @CrossOrigin({"https://chipper-vacherin-299a05.netlify.app/"})
+    @CrossOrigin({"https://easy-online-banking.netlify.app/"})
     public ResponseEntity<?> registerUser(@RequestBody UsersDto userDto) {
         // You can add validations and checks here
         userService.registerUser(userDto);

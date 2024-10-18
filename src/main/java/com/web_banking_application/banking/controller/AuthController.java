@@ -66,7 +66,7 @@ import com.web_banking_application.banking.service.implimentation.UsersServiceIm
 
 @RestController
 @RequestMapping("/api/authenticate")
-@CrossOrigin(origins = { "https://chipper-vacherin-299a05.netlify.app/"}, allowedHeaders = "*", allowCredentials = "true")
+@CrossOrigin(origins = { "https://easy-online-banking.netlify.app/"}, allowedHeaders = "*", allowCredentials = "true")
 
 public class AuthController {
     @Autowired

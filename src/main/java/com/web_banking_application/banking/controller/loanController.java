@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web_banking_application.banking.dto.loanDto;
 import com.web_banking_application.banking.service.loanService;
 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("https://easy-online-banking.netlify.app/")
 @RestController
 @RequestMapping("/api/loan")
 public class loanController {

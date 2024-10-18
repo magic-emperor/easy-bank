@@ -88,7 +88,7 @@ public class accountController {
     }
     
     @PutMapping("user/{userId}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://easy-online-banking.netlify.app/")
     public ResponseEntity<accountDto> updateAccountByuserId(@PathVariable("userId") Long accNumber,@RequestBody accountDto updatedAccounts) {
         accountDto accountDto = AccountService.updateAccountByuserId(accNumber,updatedAccounts);
         if (accountDto != null) {
@@ -100,7 +100,7 @@ public class accountController {
     
     
     @PutMapping("acc/{accNumber}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://easy-online-banking.netlify.app/")
     public ResponseEntity<accountDto> updateAccountByAccountNumber(@PathVariable("accNumber") Long accNumber,@RequestBody accountDto updateAccounts) {
         accountDto accountDto = AccountService.updateAccountByAccountNumber(accNumber,updateAccounts);
         if (accountDto != null) {
@@ -113,7 +113,7 @@ public class accountController {
     
     // Build Delete account Rest API
     @DeleteMapping("/id/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://easy-online-banking.netlify.app/")
     public ResponseEntity<String> deleteAccount(@PathVariable("id") Long accId) {
         AccountService.deleteAccount(accId);
         return ResponseEntity.ok("Account Deleted Successfully!");
