@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web_banking_application.banking.dto.transactionDto;
 import com.web_banking_application.banking.service.transactionService;
 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("https://chipper-vacherin-299a05.netlify.app/")
 @RestController
 @RequestMapping("/api/transaction")
 public class transactionController {
@@ -27,13 +27,13 @@ public class transactionController {
 		this.TransactionService = TransactionService;
 		// TODO Auto-generated constructor stub
 	}
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "https://chipper-vacherin-299a05.netlify.app/")
 	@PostMapping
 	public ResponseEntity<transactionDto> createTransaction(@RequestBody transactionDto TransactionDto){
 		transactionDto savedTransaction = TransactionService.createTransaction(TransactionDto);
 		return new ResponseEntity<>(savedTransaction, HttpStatus.CREATED);
 	}
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "https://chipper-vacherin-299a05.netlify.app/")
 	@GetMapping
 	public ResponseEntity<List<transactionDto>> getAllTransaction(){
 		List<transactionDto> Transactions = TransactionService.getAlltransaction();
@@ -62,7 +62,6 @@ public class transactionController {
 	}
     
 	   @DeleteMapping("{id}")
-	    @CrossOrigin(origins = "http://localhost:3000")
 	    public ResponseEntity<String> deleteTransaction(@PathVariable("id") Long transactionId) {
 		   TransactionService.deleteTransaction(transactionId);
 	        return ResponseEntity.ok("Transaction Deleted Successfully!");

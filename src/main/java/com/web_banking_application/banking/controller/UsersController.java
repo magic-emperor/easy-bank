@@ -36,7 +36,6 @@ public class UsersController {
 	
 	//Build Add user Rest API
 	@PostMapping
-	@CrossOrigin({"https://chipper-vacherin-299a05.netlify.app/","easy-bank-production.up.railway.app"})
 	public ResponseEntity<UsersDto> createUser(@RequestBody UsersDto userDto){
 		UsersDto savedUser = userService.createUsers(userDto);
 		return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
@@ -44,7 +43,6 @@ public class UsersController {
 	
 	//Build get users Rest API
 	@GetMapping("{id}")
-	@CrossOrigin({"https://chipper-vacherin-299a05.netlify.app/","easy-bank-production.up.railway.app"})
 	public ResponseEntity<UsersDto> getUsersByID(@PathVariable("id") Long UserID){
 		UsersDto usersDto = userService.getUsersByID(UserID);
 		return ResponseEntity.ok(usersDto);
@@ -52,7 +50,6 @@ public class UsersController {
 	
 	//Build getAll Users Rest API
 	@GetMapping 
-	@CrossOrigin({"https://chipper-vacherin-299a05.netlify.app/","easy-bank-production.up.railway.app"})
 	public ResponseEntity<List<UsersDto>> getAllUsers(){
 		List<UsersDto> Users = userService.getAllUsers();
 		return ResponseEntity.ok(Users);
@@ -60,7 +57,6 @@ public class UsersController {
 	
 	//Build Update Users RestAPI
 	@PutMapping("{id}")
-	@CrossOrigin({"https://chipper-vacherin-299a05.netlify.app/","easy-bank-production.up.railway.app"})
 	public ResponseEntity<UsersDto> updateUsers(@PathVariable("id") Long userId, @RequestBody UsersDto updatedUsers){
 		UsersDto usersDto = userService.updateUser(userId, updatedUsers);
 		return ResponseEntity.ok(usersDto);
@@ -68,7 +64,6 @@ public class UsersController {
 	
 	//Build Delete User Rest API
 	@DeleteMapping("{id}")
-	@CrossOrigin({"https://chipper-vacherin-299a05.netlify.app/","easy-bank-production.up.railway.app"})
 	public ResponseEntity<String> deleteUser(@PathVariable("id") Long userId){
 		userService.deleteUser(userId);
 		return ResponseEntity.ok("User Deleted Successfully!");

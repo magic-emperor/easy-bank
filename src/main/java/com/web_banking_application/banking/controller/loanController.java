@@ -27,7 +27,6 @@ public class loanController {
 		this.LoanService = LoanService;
 		// TODO Auto-generated constructor stub
 	}
-	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping
 	public ResponseEntity<loanDto> createLoan(@RequestBody loanDto LoanDto){
 		loanDto savedLoan = LoanService.createLoan(LoanDto);
@@ -35,7 +34,6 @@ public class loanController {
 	}
 	
 	@GetMapping("id/{id}")
-	@CrossOrigin(origins = "http://localhost:3000")
 	public ResponseEntity<loanDto> getLoanById(@PathVariable("id") Long loanId){
 		loanDto LoanDto = LoanService.getLoanById(loanId);
 		return ResponseEntity.ok(LoanDto);
@@ -48,7 +46,6 @@ public class loanController {
 	}
 	
 	@DeleteMapping("id/{id}")
-	@CrossOrigin(origins = "https://chipper-vacherin-299a05.netlify.app/")
 	public ResponseEntity<String> deleteAccount(@PathVariable("id") Long loanId){
 		LoanService.deleteLoan(loanId);
 		return ResponseEntity.ok("Loan Deleted Successfully!");
