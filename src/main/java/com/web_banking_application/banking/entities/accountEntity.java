@@ -21,8 +21,8 @@ public class accountEntity {
     @Column(name ="userId")
     private Long userId;
 
-    @Column(name = "accountBalance")
-    private Double accBalance;
+    @Column(name = "accountBalance", nullable= false)
+    private Double accBalance = 0.0;
 
     @Column(name = "accountDate")
     private String accCreatedDate;

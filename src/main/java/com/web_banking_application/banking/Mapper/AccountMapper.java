@@ -2,7 +2,6 @@ package com.web_banking_application.banking.Mapper;
 
 import com.web_banking_application.banking.dto.accountDto;
 import com.web_banking_application.banking.entities.accountEntity;
-import com.web_banking_application.banking.entities.users;
 
 public class AccountMapper{
     public static accountDto mapToAccountDto(accountEntity accountEntity) {
@@ -13,7 +12,7 @@ public class AccountMapper{
             accountEntity.getAccId(),
             accountEntity.getUserId(),
             accountEntity.getAccNumber(),
-            accountEntity.getAccBalance(),
+            accountEntity.getAccBalance()!= null ? accountEntity.getAccBalance() : 0.0,
             accountEntity.getAccCreatedDate(),
             accountEntity.getAccType()
         );

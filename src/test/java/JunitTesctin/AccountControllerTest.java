@@ -1,22 +1,26 @@
 package JunitTesctin;
 
 
-import com.web_banking_application.banking.controller.accountController;
-import com.web_banking_application.banking.dto.accountDto;
-import com.web_banking_application.banking.service.accountService;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import com.web_banking_application.banking.controller.accountController;
+import com.web_banking_application.banking.dto.accountDto;
+import com.web_banking_application.banking.entities.accountEntity;
+import com.web_banking_application.banking.service.accountService;
 
 class AccountControllerTest {
 
@@ -28,9 +32,11 @@ class AccountControllerTest {
 
     @BeforeEach
     void setUp() {
+        accountEntity account = new accountEntity();
+        account.setAccBalance(0.0); 
         MockitoAnnotations.openMocks(this);
     }
-
+    
     @Test
     void testCreateAccount() {
         accountDto inputDto = new accountDto();
@@ -138,14 +144,21 @@ class AccountControllerTest {
     }
 
     @Test
-    void testDeleteAccount() {
-        Long accId = 1L;
-        doNothing().when(AccountService).deleteAccount(accId);
+void testDeleteAccount() {
+    Long accId = 1L;
 
-        ResponseEntity<String> response = AccountController.deleteAccount(accId);
+    // Mock the behavior of the AccountService to do nothing when deleteAccount is called
+    doNothing().when(AccountService).deleteAccount(accId);
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("Account Deleted Successfully!", response.getBody());
-        verify(AccountService, times(1)).deleteAccount(accId);
-    }
+    // Perform the delete action through the AccountController
+    ResponseEntity<String> response = AccountController.deleteAccount(accId);
+
+    // Verify the expected results
+    assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertEquals("Account Deleted Successfully!", response.getBody());
+
+    // Verify that the deleteAccount method was called once
+    verify(AccountService, times(1)).deleteAccount(accId);
+}
+
 }
