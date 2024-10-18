@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.web_banking_application.banking.Mapper.UsersMapper;
@@ -18,13 +18,15 @@ import com.web_banking_application.banking.service.UserService;
 public class UsersServiceImplementation implements UserService {
     
     private final UsersRepositories usersRepositories;
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public UsersServiceImplementation(UsersRepositories usersRepositories, BCryptPasswordEncoder passwordEncoder) {
-        this.usersRepositories = usersRepositories;
-        this.passwordEncoder = passwordEncoder;
-    }
+
+@Autowired
+public UsersServiceImplementation(UsersRepositories usersRepositories, PasswordEncoder passwordEncoder) {
+    this.usersRepositories = usersRepositories;
+    this.passwordEncoder = passwordEncoder;
+}
+
 
     @Override
     public UsersDto createUsers(UsersDto userDto) {
