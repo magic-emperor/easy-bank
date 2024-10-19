@@ -34,7 +34,7 @@ public class SecurityConfig {
             .cors().and()
             .csrf().disable()
             .authorizeHttpRequests((authorize) -> authorize
-                 .requestMatchers("/api/authenticate", "/api/register", "/api/users/register","/api/users/**","api/**").permitAll()
+                 .requestMatchers("/api/authenticate", "/api/register", "/api/users/register","/api/users/**","api/**","https://easy-online-banking.netlify.app","https://localhost:3000","https://easy-bank-production.up.railway.app").permitAll()
                 .anyRequest().authenticated()
             )
             .sessionManagement((session) -> session
