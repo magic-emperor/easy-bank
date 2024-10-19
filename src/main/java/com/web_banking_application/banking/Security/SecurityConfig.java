@@ -34,7 +34,7 @@ public class SecurityConfig {
             .cors().and()
             .csrf().disable()
             .authorizeHttpRequests((authorize) -> authorize
-                 .requestMatchers("/api/authenticate", "/api/register", "/api/users/register","/api/users/**","api/**","https://easy-online-banking.netlify.app","https://localhost:3000","https://easy-bank-production.up.railway.app").permitAll()
+                 .requestMatchers("/api/authenticate", "/api/register", "/api/users/register","/api/users/**","/api/**","/api/users/login","/api/dashboard/**","https://easy-online-banking.netlify.app","https://localhost:3000","https://easy-bank-production.up.railway.app").permitAll()
                 .anyRequest().authenticated()
             )
             .sessionManagement((session) -> session
@@ -47,7 +47,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("https://easy-online-banking.netlify.app", "http://localhost:3000")); // Adjust the port if necessary
+        configuration.setAllowedOrigins(Arrays.asList("https://easy-online-bank.netlify.app", "http://localhost:3000")); // Adjust the port if necessary
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
