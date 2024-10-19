@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web_banking_application.banking.dto.transactionDto;
 import com.web_banking_application.banking.service.transactionService;
 
-@CrossOrigin(origins = {"https://easy-online-banking.netlify.app","https://localhost:3000","https://easy-bank-production.up.railway.app"})
+@CrossOrigin(origins = {"https://easy-online-bank.netlify.app","https://localhost:3000","https://easy-bank-production.up.railway.app"})
 @RestController
 @RequestMapping("/api/transaction")
 public class transactionController {
@@ -27,13 +27,13 @@ public class transactionController {
 		this.TransactionService = TransactionService;
 		// TODO Auto-generated constructor stub
 	}
-@CrossOrigin(origins = {"https://easy-online-banking.netlify.app","https://localhost:3000","https://easy-bank-production.up.railway.app"})
+@CrossOrigin(origins = {"https://easy-online-bank.netlify.app","https://localhost:3000","https://easy-bank-production.up.railway.app"})
 	@PostMapping
 	public ResponseEntity<transactionDto> createTransaction(@RequestBody transactionDto TransactionDto){
 		transactionDto savedTransaction = TransactionService.createTransaction(TransactionDto);
 		return new ResponseEntity<>(savedTransaction, HttpStatus.CREATED);
 	}
-@CrossOrigin(origins = {"https://easy-online-banking.netlify.app","https://localhost:3000","https://easy-bank-production.up.railway.app"})
+@CrossOrigin(origins = {"https://easy-online-bank.netlify.app","https://localhost:3000","https://easy-bank-production.up.railway.app"})
 	@GetMapping
 	public ResponseEntity<List<transactionDto>> getAllTransaction(){
 		List<transactionDto> Transactions = TransactionService.getAlltransaction();
