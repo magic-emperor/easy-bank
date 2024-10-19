@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.web_banking_application.banking.dto.UsersDto;
 import com.web_banking_application.banking.service.UserService;
-@CrossOrigin({"https://easy-online-banking.netlify.app"})
+@CrossOrigin(origins = {"https://easy-online-banking.netlify.app","https://localhost:3000"})
 @RestController
 @RequestMapping("/api/users")
 public class UsersController {
@@ -27,7 +27,7 @@ public class UsersController {
 	}
 
     @PostMapping("/register")
-    @CrossOrigin("https://easy-online-banking.netlify.app")
+    @CrossOrigin(origins = {"https://easy-online-banking.netlify.app","https://localhost:3000"})
     public ResponseEntity<?> registerUser(@RequestBody UsersDto userDto) {
         // You can add validations and checks here
         userService.registerUser(userDto);
@@ -36,7 +36,7 @@ public class UsersController {
 	
 	//Build Add user Rest API
 	@PostMapping
-@CrossOrigin(origins = "https://easy-online-banking.netlify.app")
+@CrossOrigin(origins = {"https://easy-online-banking.netlify.app","https://localhost:3000"})
 	public ResponseEntity<UsersDto> createUser(@RequestBody UsersDto userDto){
 		UsersDto savedUser = userService.createUsers(userDto);
 		return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
@@ -44,7 +44,7 @@ public class UsersController {
 	
 	//Build get users Rest API
 	@GetMapping("{id}")
-@CrossOrigin(origins = "https://easy-online-banking.netlify.app")
+@CrossOrigin(origins = {"https://easy-online-banking.netlify.app","https://localhost:3000"})
 	public ResponseEntity<UsersDto> getUsersByID(@PathVariable("id") Long UserID){
 		UsersDto usersDto = userService.getUsersByID(UserID);
 		return ResponseEntity.ok(usersDto);
@@ -52,7 +52,7 @@ public class UsersController {
 	
 	//Build getAll Users Rest API
 	@GetMapping 
-@CrossOrigin(origins = "https://easy-online-banking.netlify.app")
+@CrossOrigin(origins = {"https://easy-online-banking.netlify.app","https://localhost:3000"})
 	public ResponseEntity<List<UsersDto>> getAllUsers(){
 		List<UsersDto> Users = userService.getAllUsers();
 		return ResponseEntity.ok(Users);
@@ -60,7 +60,7 @@ public class UsersController {
 	
 	//Build Update Users RestAPI
 	@PutMapping("{id}")
-@CrossOrigin(origins = "https://easy-online-banking.netlify.app")
+@CrossOrigin(origins = {"https://easy-online-banking.netlify.app","https://localhost:3000"})
 	public ResponseEntity<UsersDto> updateUsers(@PathVariable("id") Long userId, @RequestBody UsersDto updatedUsers){
 		UsersDto usersDto = userService.updateUser(userId, updatedUsers);
 		return ResponseEntity.ok(usersDto);
@@ -68,7 +68,7 @@ public class UsersController {
 	
 	//Build Delete User Rest API
 	@DeleteMapping("{id}")
-@CrossOrigin(origins = "https://easy-online-banking.netlify.app")
+@CrossOrigin(origins = {"https://easy-online-banking.netlify.app","https://localhost:3000"})
 	public ResponseEntity<String> deleteUser(@PathVariable("id") Long userId){
 		userService.deleteUser(userId);
 		return ResponseEntity.ok("User Deleted Successfully!");

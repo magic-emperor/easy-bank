@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
 
     @Override
-     @CrossOrigin(origins = "https://easy-online-banking.netlify.app")
+     @CrossOrigin(origins = {"https://easy-online-banking.netlify.app","http://localhost:3000"})
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // Allow all endpoints
                 .allowedOrigins("*")

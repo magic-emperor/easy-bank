@@ -79,7 +79,7 @@ public class AuthController {
     private UsersServiceImplementation usersServiceImplementation;
 
     @PostMapping
-     @CrossOrigin(origins = "https://easy-online-banking.netlify.app")
+     @CrossOrigin(origins = {"https://easy-online-banking.netlify.app","https://localhost:3000"})
     public ResponseEntity<?> authenticate(@RequestBody AuthRequest authRequest) {
         try {
             authenticationManager.authenticate(
