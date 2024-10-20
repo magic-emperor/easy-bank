@@ -20,7 +20,7 @@ public class UsersMapper {
     // Convert UsersDto to users Entity
     public static users mapToUsers(UsersDto usersDto) {
         return new users(
-                usersDto.getId(),
+                usersDto.getuserId(),
                 usersDto.getFirst_Name(),
                 usersDto.getLast_Name(),
                 usersDto.getEmail(),
@@ -32,7 +32,7 @@ public class UsersMapper {
     // Convert UsersDto to users Entity (Alternative method name)
     public static users toEntity(UsersDto usersDto) {
         users user = new users();
-        user.setUserId(usersDto.getId());
+        user.setUserId(usersDto.getuserId());
         user.setFirst_Name(usersDto.getFirst_Name());
         user.setLast_Name(usersDto.getLast_Name());
         user.setEmail(usersDto.getEmail());

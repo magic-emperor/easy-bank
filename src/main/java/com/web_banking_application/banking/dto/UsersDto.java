@@ -1,17 +1,17 @@
 package com.web_banking_application.banking.dto;
 
 public class UsersDto {
-	private long id;
+	private long userId;
 	private String first_Name;
 	private String last_Name;
 	private String email;
 	private String password;
 	private long mobile;
-	public long getId() {
-		return id;
+	public long getuserId() {
+		return userId;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setId(long userId) {
+		this.userId = userId;
 	}
 	public String getFirst_Name() {
 		return first_Name;
@@ -43,9 +43,9 @@ public class UsersDto {
 	public void setMobile(long mobile) {
 		this.mobile = mobile;
 	}
-	public UsersDto(long id, String first_Name, String last_Name, String email, String password, long mobile) {
+	public UsersDto(long userId, String first_Name, String last_Name, String email, String password, long mobile) {
 		super();
-		this.id = id;
+		this.userId = userId;
 		this.first_Name = first_Name;
 		this.last_Name = last_Name;
 		this.email = email;

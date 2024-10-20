@@ -88,8 +88,8 @@ public class AuthController {
             final UsersDto user = usersServiceImplementation.getUsersByID(usersServiceImplementation.getAllUsers().stream()
                     .filter(u -> u.getEmail().equals(authRequest.getUsername()))
                     .findFirst()
-                    .orElseThrow(() -> new UsernameNotFoundException("User not found")).getId());
-            final long userId = user.getId();
+                    .orElseThrow(() -> new UsernameNotFoundException("User not found")).getuserId());
+            final long userId = user.getuserId();
             final String jwt = jwtUtil.generateToken(authRequest.getUsername(), userId);
             return ResponseEntity.ok(new AuthResponse(jwt));
         } catch (BadCredentialsException e) {
