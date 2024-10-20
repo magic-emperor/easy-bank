@@ -15,7 +15,7 @@ public class WebConfig implements WebMvcConfigurer {
      @CrossOrigin(origins = {"https://easy-online-bank.netlify.app","https://localhost:3000","https://easy-bank-production.up.railway.app"})
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // Allow all endpoints
-                .allowedOrigins("https://easy-online-bank.netlify.app")
+                .allowedOrigins("https://easy-online-bank.netlify.app","https://easy-online-bank.netlify.app/**")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*") // Allow all headers
                 .allowCredentials(true); // Allow credentials (important for auth)
