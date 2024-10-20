@@ -1,6 +1,7 @@
 package com.web_banking_application.banking.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,8 +31,8 @@ public class UsersController {
     @CrossOrigin(origins = {"https://easy-online-bank.netlify.app","https://localhost:3000","https://easy-bank-production.up.railway.app/"})
     public ResponseEntity<?> registerUser(@RequestBody UsersDto userDto) {
         // You can add validations and checks here
-        userService.registerUser(userDto);
-        return ResponseEntity.ok("User registered successfully");
+        UsersDto registeredUser = userService.registerUser(userDto);
+    return ResponseEntity.ok(Map.of("message", "User registered successfully", "userId", registeredUser.getuserId()));
     }
 	
 	//Build Add user Rest API

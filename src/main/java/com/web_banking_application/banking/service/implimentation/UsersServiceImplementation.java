@@ -78,7 +78,7 @@ public UsersServiceImplementation(UsersRepositories usersRepositories, PasswordE
     }
 
     @Override
-    public void registerUser(UsersDto userDto) {
+    public UsersDto  registerUser(UsersDto userDto) {
         users user = new users();
         user.setFirst_Name(userDto.getFirst_Name());
         user.setLast_Name(userDto.getLast_Name());
@@ -86,5 +86,7 @@ public UsersServiceImplementation(UsersRepositories usersRepositories, PasswordE
         user.setPassword(passwordEncoder.encode(userDto.getPassword())); // Encrypt password
         user.setMobile(userDto.getMobile());
         usersRepositories.save(user);
+        users savedUser = usersRepositories.save(user);
+        return UsersMapper.mapToUsersDto(savedUser);
     }
 }
