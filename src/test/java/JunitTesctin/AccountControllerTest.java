@@ -43,7 +43,7 @@ class AccountControllerTest {
         accountDto savedDto = new accountDto();
         when(AccountService.createAccount(inputDto)).thenReturn(savedDto);
 
-        ResponseEntity<accountDto> response = AccountController.createAccount(inputDto);
+        ResponseEntity<?> response = AccountController.createAccount(inputDto);
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         assertEquals(savedDto, response.getBody());
