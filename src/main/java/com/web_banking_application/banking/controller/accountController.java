@@ -34,11 +34,22 @@ public class accountController {
     
     @PostMapping
      @CrossOrigin(origins = {"https://easy-online-bank.netlify.app","https://localhost:3000","https://easy-bank-production.up.railway.app"})
-    public ResponseEntity<accountDto> createAccount(@RequestBody accountDto AccountDto) {
+    public ResponseEntity<?> createAccount(@RequestBody accountDto AccountDto) {
         System.out.println("Received DTO in controller: " + AccountDto);
+            if (AccountDto.getUserId() == null) {
+        System.out.println("Error: User ID is null in the received DTO");
+        return ResponseEntity.badRequest().body("User ID is required");
+    }
+    
+    try {
         accountDto savedAccount = AccountService.createAccount(AccountDto);
-        System.out.println("Created Account DTO: " + savedAccount);  // Changed from createAccount(AccountDto) to savedAccount
+        System.out.println("Created Account DTO: " + savedAccount);
         return new ResponseEntity<>(savedAccount, HttpStatus.CREATED);
+    } catch (Exception e) {
+        System.out.println("Error creating account: " + e.getMessage());
+        e.printStackTrace();
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating account: " + e.getMessage());
+    }
     }
     // Build get account by userId Rest API
     @GetMapping("/userid/{userId}")

@@ -18,7 +18,7 @@ public class accountEntity {
     @Column(name = "accountNumber")
     private Long accNumber;
 
-    @Column(name ="userId")
+    @Column(name ="userId", nullable=false)
     private Long userId;
 
     @Column(name = "accountBalance", nullable= false)
